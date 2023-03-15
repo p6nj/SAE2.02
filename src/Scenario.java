@@ -29,7 +29,8 @@ public class Scenario implements Fields {
         number = id;
         quests = new ArrayList<Quest>();
         for (String line : readFileLines(String.format("dat/scenario_%d.csv", id))) {
-            quests.add(parse(line.split("\\|")));
+            if (!line.isBlank())
+                quests.add(parse(line.split("\\|")));
         }
     }
 
