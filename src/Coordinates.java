@@ -10,4 +10,8 @@ public class Coordinates {
     public Coordinates() {
         x = y = 0;
     }
+
+    public String toString() {
+        return String.format("(%d, %d)", x, y);
+    }
 }

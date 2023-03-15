@@ -27,23 +27,23 @@ public class Scenario implements Fields {
 
     public Scenario(int id) throws NoSuchElementException, FileNotFoundException, IOException {
         number = id;
+        quests = new ArrayList<Quest>();
         for (String line : readFileLines(String.format("dat/scenario_%d.csv", id))) {
-            System.out.println(line);
-            quests.add(parse(line.split("|")));
+            quests.add(parse(line.split("\\|")));
         }
     }
 
     private Quest parse(String[] rawQuest) throws NoSuchElementException {
         int id, t, xp;
         Coordinates coords;
-        Quest[][] conds = new Quest[2][2];
+        int[][] conds = new int[2][2];
         String name, s, temp;
 
         id = Integer.parseInt(rawQuest[Fields.ID]);
         t = Integer.parseInt(rawQuest[Fields.TIME]);
         xp = Integer.parseInt(rawQuest[Fields.EXP]);
         String[] rawCoords = rawQuest[Fields.POSITION].split("\\(")[1].split("\\)")[0].split(",");
-        coords = new Coordinates(Integer.parseInt(rawCoords[0]), Integer.parseInt(rawCoords[1]));
+        coords = new Coordinates(Integer.parseInt(rawCoords[0]), Integer.parseInt(rawCoords[1].trim()));
         if ((s = rawQuest[Fields.ANTECEDENTS]) != "()") {
             s = s.substring(1, s.length() - 1);// remove surrounding parenthesis
             String first = "", second = "";
@@ -56,23 +56,29 @@ public class Scenario implements Fields {
                 else {
                     if (chooser == 1)
                         first = first + c;
-                    else
+                    else if (chooser == 2)
                         second = second + c;
                 }
             }
             if (!first.isEmpty()) {
                 String[] firstSplit = first.split(",");
                 if (!(temp = firstSplit[0]).isEmpty())
-                    conds[0][0] = getQuest(Integer.parseInt(temp));
-                if (!(temp = firstSplit[1]).isEmpty())
-                    conds[0][1] = getQuest(Integer.parseInt(temp));
+                    conds[0][0] = Integer.parseInt(temp);
+
+                if (firstSplit.length != 1) {
+                    temp = firstSplit[1];
+                    conds[0][1] = Integer.parseInt(temp.trim());
+                }
             }
+
             if (!second.isEmpty()) {
                 String[] secondSplit = second.split(",");
                 if (!(temp = secondSplit[0]).isEmpty())
-                    conds[1][0] = getQuest(Integer.parseInt(temp));
-                if (!(temp = secondSplit[1]).isEmpty())
-                    conds[1][1] = getQuest(Integer.parseInt(temp));
+                    conds[1][0] = Integer.parseInt(temp);
+                if (secondSplit.length != 1) {
+                    temp = secondSplit[1];
+                    conds[1][1] = Integer.parseInt(temp.trim());
+                }
             }
         }
         name = rawQuest[Fields.NAME];
@@ -88,7 +94,27 @@ public class Scenario implements Fields {
     }
 
     public String toString() {
-        return quests.toString();
+        String result = "";
+        for (Quest q : quests) {
+            result = result + q.toString() + "\n";
+        }
+        return result;
+    }
+
+    private void debug(String s) {
+        System.out.println("DEBUG: " + s);
+    }
+
+    private void debug(String[] s) {
+        System.out.print("DEBUG: [");
+        for (String s2 : s) {
+            System.out.print("\n\t" + s2 + ',');
+        }
+        System.out.print("\n]\n");
+    }
+
+    private void debug(int i) {
+        debug(String.format("%d", i));
     }
 
 }
