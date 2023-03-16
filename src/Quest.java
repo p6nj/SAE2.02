@@ -4,6 +4,7 @@ public class Quest {
         private Coordinates coords;
         private int[][] conds = new int[2][2];
         private String name;
+        private Boolean done = false;
 
         public Quest(int questId, Coordinates questCoordinates, int[][] antecedents, int time, int exp, String title) {
                 id = questId;
@@ -12,6 +13,14 @@ public class Quest {
                 t = time;
                 xp = exp;
                 name = title;
+        }
+
+        public void complete() {
+                done = true;
+        }
+
+        public Boolean isComplete() {
+                return done;
         }
 
         private Quest debugconds() {
