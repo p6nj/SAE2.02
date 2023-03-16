@@ -38,14 +38,14 @@ public class Quest {
                                                                                                                 : String.format("(%d,%s)",
                                                                                                                                 conds[0][0],
                                                                                                                                 conds[0][1] == 0 ? ""
-                                                                                                                                                : String.format("%d",
+                                                                                                                                                : String.format(" %d",
                                                                                                                                                                 conds[0][1])),
                                                                                                 conds[1][0] == 0 && conds[1][1] == 0
                                                                                                                 ? ""
-                                                                                                                : String.format("(%d,%s)",
+                                                                                                                : String.format(" (%d,%s)",
                                                                                                                                 conds[1][0],
                                                                                                                                 conds[1][1] == 0 ? ""
-                                                                                                                                                : String.format("%d",
+                                                                                                                                                : String.format(" %d",
                                                                                                                                                                 conds[1][1]))),
                                 t, xp, name);
         }

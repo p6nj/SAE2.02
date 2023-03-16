@@ -102,9 +102,10 @@ public class Scenario implements Fields {
 
     public String toString() {
         String result = "";
-        for (Quest q : quests) {
-            result = result + q.toString() + "\n";
+        for (int i = 0; i < quests.size() - 1; i++) {
+            result = result + quests.get(i).toString() + "\n";
         }
+        result = result + quests.get(quests.size() - 1);
         return result;
     }
 
