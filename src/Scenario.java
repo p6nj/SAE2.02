@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 public class Scenario implements Fields {
     public int number;
-    private ArrayList<Quest> quests;
+    private ArrayList<Quest> quests = new ArrayList<Quest>();
 
     private static ArrayList<String> readFileLines(String filename) throws IOException, FileNotFoundException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -27,8 +27,14 @@ public class Scenario implements Fields {
 
     public Scenario(int id) throws NoSuchElementException, FileNotFoundException, IOException {
         number = id;
-        quests = new ArrayList<Quest>();
         for (String line : readFileLines(String.format("dat/scenario_%d.csv", id))) {
+            if (!line.isBlank())
+                quests.add(parse(line.split("\\|")));
+        }
+    }
+
+    public Scenario(String fileContents) throws NoSuchElementException, FileNotFoundException, IOException {
+        for (String line : fileContents.split("\\n")) {
             if (!line.isBlank())
                 quests.add(parse(line.split("\\|")));
         }

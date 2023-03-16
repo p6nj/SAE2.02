@@ -1,0 +1,1 @@
+Quests antecedents: when there's only one antecedent, it's always the first.
