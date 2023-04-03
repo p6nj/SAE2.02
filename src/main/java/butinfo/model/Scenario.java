@@ -1,9 +1,10 @@
 package butinfo.model;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -11,26 +12,15 @@ public class Scenario implements Fields {
     public int number;
     private ArrayList<Quest> quests = new ArrayList<Quest>();
 
-    private static ArrayList<String> readFileLines(String filename) throws IOException, FileNotFoundException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        ArrayList<String> everything = new ArrayList<String>();
-        try {
-            String line = br.readLine();
-
-            while (line != null) {
-                everything.add(line);
-                line = br.readLine();
-            }
-        } finally {
-            br.close();
-        }
-        return everything;
+    public static String readScenarioToString(int id) throws IOException {
+        byte[] encodedBytes = Files.readAllBytes(
+                Paths.get(Scenario.class.getResource(String.format("/CSV/scenario_%d.csv", id)).getPath()));
+        return new String(encodedBytes, StandardCharsets.UTF_8);
     }
 
     public Scenario(int id) throws NoSuchElementException, FileNotFoundException, IOException {
         number = id;
-        for (String line : readFileLines(
-                Scenario.class.getResource(String.format("/CSV/scenario_%d.csv", id)).getPath())) {
+        for (String line : readScenarioToString(id).split(System.lineSeparator())) {
             if (!line.isBlank())
                 quests.add(parse(line.split("\\|")));
         }
