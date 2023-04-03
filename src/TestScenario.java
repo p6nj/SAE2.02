@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 
 import org.junit.Test;
 
+import model.Scenario;
+
 public class TestScenario {
   @Test
   public void scenario_assert() throws NoSuchElementException, FileNotFoundException, IOException {

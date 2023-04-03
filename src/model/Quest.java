@@ -1,3 +1,5 @@
+package model;
+
 public class Quest {
         public int id;
         private int t, xp;
