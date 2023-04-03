@@ -1,4 +1,4 @@
-package model;
+package butinfo.model;
 
 public class Coordinates {
     int x, y;

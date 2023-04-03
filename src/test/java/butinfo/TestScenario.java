@@ -1,4 +1,4 @@
-package tests;
+package butinfo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 
 import org.junit.Test;
-
-import model.Scenario;
+import butinfo.model.Scenario;
 
 public class TestScenario {
   @Test

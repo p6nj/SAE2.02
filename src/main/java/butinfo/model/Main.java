@@ -1,4 +1,4 @@
-package model;
+package butinfo.model;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package model;
+package butinfo.model;
 
 public class Quest {
         public int id;
