@@ -29,7 +29,8 @@ public class Scenario implements Fields {
 
     public Scenario(int id) throws NoSuchElementException, FileNotFoundException, IOException {
         number = id;
-        for (String line : readFileLines(String.format("dat/scenario_%d.csv", id))) {
+        for (String line : readFileLines(
+                Scenario.class.getResource(String.format("/CSV/scenario_%d.csv", id)).getPath())) {
             if (!line.isBlank())
                 quests.add(parse(line.split("\\|")));
         }
