@@ -6,7 +6,7 @@ public class Quest {
         public int id;
         private int t, xp;
         private Coordinates coords;
-        private Vector<Vector<Integer>> conds;
+        private Vector<Vector<Integer>> antecedents;
         private String name;
         private final static String sep = "|";
 
@@ -14,7 +14,7 @@ public class Quest {
                         Vector<Vector<Integer>> antecedents, int time, int exp, String title) {
                 id = questId;
                 coords = questCoordinates;
-                conds = antecedents;
+                this.antecedents = antecedents;
                 t = time;
                 xp = exp;
                 name = title;
@@ -28,18 +28,18 @@ public class Quest {
          * @return a string representation of the conditions in tuples as seen in the
          *         CSV files
          */
-        private String stringConds() {
+        private String stringAntecedents() {
                 String result = "(";
-                for (Vector<Integer> conds : this.conds) {
+                for (Vector<Integer> antecedents : this.antecedents) {
                         result = result + "(";
-                        for (int cond : conds) {
+                        for (int cond : antecedents) {
                                 result = result + Integer.toString(cond) + ", ";
                         }
-                        result = result.substring(0, result.length() - (conds.size() > 1 ? 2 : 1));
+                        result = result.substring(0, result.length() - (antecedents.size() > 1 ? 2 : 1));
                         result = result + "), ";
                 }
-                if (!this.conds.isEmpty())
-                        result = result.substring(0, result.length() - (this.conds.size() > 1 ? 2 : 1));
+                if (!this.antecedents.isEmpty())
+                        result = result.substring(0, result.length() - (this.antecedents.size() > 1 ? 2 : 1));
                 result = result + ")";
                 return result;
         }
@@ -52,7 +52,8 @@ public class Quest {
          * files
          */
         public String toString() {
-                return String.format("%d%s%s%s%s%s%d%s%d%s%s", id, sep, coords.toString(), sep, stringConds(), sep, t,
+                return String.format("%d%s%s%s%s%s%d%s%d%s%s", id, sep, coords.toString(), sep,
+                                stringAntecedents(), sep, t,
                                 sep, xp, sep, name);
         }
 }
