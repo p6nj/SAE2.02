@@ -12,6 +12,12 @@ public class Coordinates {
         x = y = 0;
     }
 
+    /**
+     * Returns a string representation of this Point with CSV-like structure.
+     * 
+     * 
+     * @return a string representation of this Point as seen in the CSV files.
+     */
     public String toString() {
         return String.format("(%d, %d)", x, y);
     }

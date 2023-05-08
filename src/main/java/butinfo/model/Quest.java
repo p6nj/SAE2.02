@@ -8,7 +8,6 @@ public class Quest {
         private Coordinates coords;
         private Vector<Vector<Integer>> conds;
         private String name;
-        private Boolean done = false;
         private final static String sep = "|";
 
         public Quest(int questId, Coordinates questCoordinates,
@@ -21,26 +20,14 @@ public class Quest {
                 name = title;
         }
 
-        public void complete() {
-                done = true;
-        }
-
-        public Boolean isComplete() {
-                return done;
-        }
-
-        private Quest debugconds() {
-                System.out.println("DEBUG: [");
-                for (Vector<Integer> cond : conds) {
-                        System.out.print("\t[ ");
-                        for (int c : cond)
-                                System.out.printf("%d, ", c);
-                        System.out.print("]\n");
-                }
-                System.out.print("]\n");
-                return this;
-        }
-
+        /**
+         * Returns a CSV-like string representation of the conditions for
+         * {@link #toString()}.
+         * 
+         * 
+         * @return a string representation of the conditions in tuples as seen in the
+         *         CSV files
+         */
         private String stringConds() {
                 String result = "(";
                 for (Vector<Integer> conds : this.conds) {
@@ -57,6 +44,13 @@ public class Quest {
                 return result;
         }
 
+        /**
+         * String representation of the quest with CSV-like structure.
+         * 
+         * 
+         * * @return a string representation of the quest in tuples as seen in the CSV
+         * files
+         */
         public String toString() {
                 return String.format("%d%s%s%s%s%s%d%s%d%s%s", id, sep, coords.toString(), sep, stringConds(), sep, t,
                                 sep, xp, sep, name);
