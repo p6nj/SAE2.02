@@ -3,105 +3,106 @@ package butinfo.model;
 import java.util.Vector;
 
 public class Parser {
-    private static String space0(String input) {
-        return input.stripLeading();
+    private String input;
+
+    public Parser(String feed_me) {
+        input = feed_me;
     }
 
-    private static String separator(String input) {
-        return input.charAt(0) == '|' ? input.substring(1) : input;
+    private void space0() {
+        input = input.stripLeading();
     }
 
-    private static String tupleDelimiter(String input) {
-        return input.charAt(0) == '(' ? input.substring(1) : input;
+    private void separator() {
+        input = input.charAt(0) == '|' ? input.substring(1) : input;
     }
 
-    private static String tupleSeparator(String input) {
-        return input.charAt(0) == ',' ? input.substring(1) : input;
+    private void tupleDelimiter() {
+        input = input.charAt(0) == '(' ? input.substring(1) : input;
     }
 
-    private static ParseResult<Integer> integer(String input) {
+    private void tupleSeparator() {
+        input = input.charAt(0) == ',' ? input.substring(1) : input;
+    }
+
+    private int integer() {
         int result = 0;
         char temp;
         while (Character.isDigit(temp = input.charAt(0))) {
             result = result * 10 + temp - '0';
             input = input.substring(1);
         }
-        return new ParseResult<Integer>(input, result);
+        return result;
     }
 
-    private static ParseResult<Vector<Integer>> tuple(String input) {
+    private Vector<Integer> tuple() {
         Vector<Integer> result = new Vector<>();
-        input = tupleDelimiter(input);
+        tupleDelimiter();
         if (input.charAt(0) != ')')
             while (true) {
-                ParseResult<Integer> temp = integer(input);
-                result.add(temp.getResult());
+                result.add(integer());
                 if (input.charAt(0) == ')')
                     break;
-                input = space0(tupleSeparator(temp.getRest()));
+                tupleSeparator();
+                space0();
                 if (input.charAt(0) == ')')
                     break;
             }
-        return new ParseResult<Vector<Integer>>(input.substring(1), result);
+        input = input.substring(1);
+        return result;
     }
 
-    private static ParseResult<Vector<Vector<Integer>>> tuples(String input) {
+    private Vector<Vector<Integer>> tuples() {
         Vector<Vector<Integer>> result = new Vector<>();
-        input = tupleDelimiter(input);
+        tupleDelimiter();
         if (input.charAt(0) != ')')
             while (true) {
-                ParseResult<Vector<Integer>> temp = tuple(input);
-                result.add(temp.getResult());
+                result.add(tuple());
                 if (input.charAt(0) == ')')
                     break;
-                input = space0(tupleSeparator(temp.getRest()));
+                tupleSeparator();
+                space0();
                 if (input.charAt(0) == ')')
                     break;
             }
-        return new ParseResult<Vector<Vector<Integer>>>(input.substring(1), result);
+        input = input.substring(1);
+        return result;
     }
 
-    public static Quest parse(String quest) {
+    public Quest parse() {
         Coordinates questCoordinates;
         Vector<Vector<Integer>> antecedents;
         int questId, time, exp;
         String title;
 
         // ID
-        ParseResult<Integer> result0 = integer(quest);
-        quest = result0.getRest();
-        questId = result0.getResult();
+        questId = integer();
 
-        quest = separator(quest);
+        separator();
 
         // coordinates
-        ParseResult<Vector<Integer>> result1 = tuple(quest);
-        quest = result1.getRest();
-        questCoordinates = new Coordinates(result1.getResult().get(0), result1.getResult().get(1));
+        Vector<Integer> result1 = tuple();
+        questCoordinates = new Coordinates(result1.get(0), result1.get(1));
 
-        quest = separator(quest);
+        separator();
 
         // antecedents
-        ParseResult<Vector<Vector<Integer>>> result2 = tuples(quest);
-        quest = result2.getRest();
-        antecedents = result2.getResult();
+        antecedents = tuples();
 
-        quest = separator(quest);
+        separator();
 
         // time
-        result0 = integer(quest);
-        quest = result0.getRest();
-        time = result0.getResult();
+        time = integer();
 
-        quest = separator(quest);
+        separator();
 
         // EXP
-        result0 = integer(quest);
-        quest = result0.getRest();
-        exp = result0.getResult();
+        exp = integer();
+
+        separator();
 
         // title
-        title = separator(quest);
+        title = input;
 
         return new Quest(questId, questCoordinates, antecedents, time, exp, title);
     }

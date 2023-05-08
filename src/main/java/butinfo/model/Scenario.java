@@ -34,7 +34,7 @@ public class Scenario implements Fields {
     }
 
     private Quest parse(String rawQuest) throws NoSuchElementException {
-        return Parser.parse(rawQuest);
+        return new Parser(rawQuest).parse();
     }
 
     private Quest getQuest(int id) throws NoSuchElementException {
