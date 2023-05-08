@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class Scenario implements Fields {
+public class Scenario {
     public int number;
     private ArrayList<Quest> quests = new ArrayList<Quest>();
 
