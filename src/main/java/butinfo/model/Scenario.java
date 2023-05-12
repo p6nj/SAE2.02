@@ -22,7 +22,7 @@ public class Scenario {
      */
     public static String readScenarioToString(int id) throws IOException {
         byte[] encodedBytes = Files.readAllBytes(
-                Paths.get(Scenario.class.getResource(String.format("/CSV/scenario_%d.csv", id)).getPath()));
+                Paths.get(Scenario.class.getResource(String.format("CSV/scenario_%d.csv", id)).getPath()));
         return new String(encodedBytes, StandardCharsets.UTF_8);
     }
 
