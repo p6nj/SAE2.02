@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 public class Scenario {
     public int number;
-    private ArrayList<Quest> quests = new ArrayList<Quest>();
+    protected ArrayList<Quest> quests = new ArrayList<Quest>();
 
     /**
      * Reads and returns the contents of a scenario as a string. This is a
@@ -76,7 +76,7 @@ public class Scenario {
      * @return the quest with the given id or null if there is no quest with the
      *         given id in the list
      */
-    private Quest getQuest(int id) throws NoSuchElementException {
+    protected Quest getQuest(int id) throws NoSuchElementException {
         for (Quest quest : quests) {
             if (quest.id == id)
                 return quest;

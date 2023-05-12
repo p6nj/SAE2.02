@@ -2,10 +2,10 @@ package butinfo.model;
 
 import java.util.Vector;
 
-public class Quest {
+public class Quest implements Comparable<Quest>{
         public int id;
         private int t, xp;
-        private Coordinates coords;
+        public Coordinates coords;
         private Vector<Vector<Integer>> antecedents;
         private String name;
         private final static String sep = "|";
@@ -55,5 +55,13 @@ public class Quest {
                 return String.format("%d%s%s%s%s%s%d%s%d%s%s", id, sep, coords.toString(), sep,
                                 stringAntecedents(), sep, t,
                                 sep, xp, sep, name);
+        }
+
+        public Vector<Vector<Integer>> getAntecedants(){
+                return antecedents;
+        }
+
+        public int compareTo(Quest other){
+                return coords.compareTo(other.coords);
         }
 }
