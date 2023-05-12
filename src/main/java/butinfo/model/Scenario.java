@@ -2,8 +2,11 @@ package butinfo.model;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -21,9 +24,18 @@ public class Scenario {
      * @return The scenario
      */
     public static String readScenarioToString(int id) throws IOException {
-        byte[] encodedBytes = Files.readAllBytes(
-                Paths.get(Scenario.class.getResource(String.format("CSV/scenario_%d.csv", id)).getPath()));
-        return new String(encodedBytes, StandardCharsets.UTF_8);
+        URI uri;
+        try {
+            uri = ClassLoader.getSystemResource("CSV").toURI();
+            String mainPath = Paths.get(uri).toString();
+            Path path = Paths.get(mainPath, String.format("scenario_%d.csv", id));
+            byte[] encodedBytes = Files.readAllBytes(path);
+            return new String(encodedBytes, StandardCharsets.UTF_8);
+        } catch (URISyntaxException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public Scenario(int id) throws NoSuchElementException, FileNotFoundException, IOException {
