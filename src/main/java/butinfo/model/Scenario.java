@@ -32,7 +32,6 @@ public class Scenario {
             byte[] encodedBytes = Files.readAllBytes(path);
             return new String(encodedBytes, StandardCharsets.UTF_8);
         } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return "";
