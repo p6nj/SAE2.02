@@ -64,4 +64,8 @@ public class Quest implements Comparable<Quest>{
         public int compareTo(Quest other){
                 return coords.compareTo(other.coords);
         }
+
+        public int getId(){
+                return id;
+        }
 }
