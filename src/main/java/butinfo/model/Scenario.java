@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -101,6 +102,30 @@ public class Scenario {
             result = result + quests.get(i).toString() + "\n";
         }
         result = result + quests.get(quests.size() - 1);
+        return result;
+    }
+
+    private void sortQuestsByAntecedents() {
+        quests.sort(new Comparator<Quest>() {
+            @Override
+            public int compare(Quest arg0, Quest arg1) {
+                return Integer.compare(arg0.antecedentNumber(), arg1.antecedentNumber());
+            }
+        });
+    }
+
+    public Vector<Quest> glouton1() {
+        sortQuestsByAntecedents();
+        Vector<Quest> result = new Vector<>();
+        Vector<Quest> left = quests;
+        if (!left.get(0).accessible(result)) {
+            System.err.println("Cannot find a quest to start.");
+            return new Vector<>();
+        }
+        Quest current;
+        while (!left.isEmpty()) {
+            current = left.remove(0);
+        }
         return result;
     }
 

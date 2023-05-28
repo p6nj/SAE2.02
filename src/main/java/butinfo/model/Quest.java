@@ -37,6 +37,13 @@ public class Quest implements Comparable<Quest> {
                 }
         }
 
+        public int antecedentNumber() {
+                int result = 0;
+                for (Vector<Integer> antclass : __antecedents)
+                        result += antclass.size();
+                return result;
+        }
+
         /**
          * Shows the accessibility from a set of done quests. If at least one quest from
          * each antecedent group is done, this quest can be done.
