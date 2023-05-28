@@ -1,6 +1,5 @@
 package butinfo.model;
 
-import java.util.List;
 import java.util.Vector;
 
 public class Quest implements Comparable<Quest> {
@@ -22,6 +21,12 @@ public class Quest implements Comparable<Quest> {
                 name = title;
         }
 
+        /**
+         * Turns all antecedents into quest objects. Cannot be done at construction time
+         * if the other quests aren't made yet.
+         * 
+         * @param context: source scenario to get the other quests
+         */
         public void antecedentsFromInt(Scenario context) {
                 antecedents = new Vector<>();
                 for (Vector<Integer> antclass : __antecedents) {
@@ -32,6 +37,14 @@ public class Quest implements Comparable<Quest> {
                 }
         }
 
+        /**
+         * Shows the accessibility from a set of done quests. If at least one quest from
+         * each antecedent group is done, this quest can be done.
+         * 
+         * @param done: quests already done
+         * @return boolean satisfying the affirmation "This quest can be accessed."
+         * @see java.util.Vector#contains(Object)
+         */
         public boolean accessible(Vector<Quest> done) {
                 boolean temp = false;
                 for (Vector<Quest> antclass : antecedents) {
