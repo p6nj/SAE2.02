@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Comparator;
+import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -105,27 +105,55 @@ public class Scenario {
         return result;
     }
 
-    private void sortQuestsByAntecedents() {
-        quests.sort(new Comparator<Quest>() {
-            @Override
-            public int compare(Quest arg0, Quest arg1) {
-                return Integer.compare(arg0.antecedentNumber(), arg1.antecedentNumber());
-            }
-        });
-    }
-
-    public Vector<Quest> glouton1() {
-        sortQuestsByAntecedents();
+    public Vector<Quest> efficace1() {
+        // prepare table
         Vector<Quest> result = new Vector<>();
+        Quest current = getQuest(0);
+        result.add(current);
         Vector<Quest> left = quests;
-        if (!left.get(0).accessible(result)) {
-            System.err.println("Cannot find a quest to start.");
-            return new Vector<>();
+        left.remove(current);
+        ArrayDeque<Vector<Quest>> pending = new ArrayDeque<>();
+        for (Vector<Quest> antecedents : current.getAntecedents()) {
+            pending.add(antecedents);
+            for (Quest q : antecedents)
+                left.remove(q);
         }
-        Quest current;
-        while (!left.isEmpty()) {
-            current = left.remove(0);
+        // structure like (1,2),4: when a vector has a length > 1, the choice will be
+        // resolved just when the current quest will be chosen
+
+        Vector<Quest> temp; // where the antecedent group is put before resolution
+        Quest best; // the best quest to choose next for resolution
+        while (!pending.isEmpty()) {
+            // new current from the deque
+            /*
+             * TODO: locally evaluate & resolve each candidate of the queue before polling
+             * to ensure always picking the closest one
+             */
+            /*
+             * TODO: remove possible duplicates in the antecedents queue
+             */
+            temp = pending.poll();
+            if (temp.size() == 1)
+                current = temp.firstElement();
+            else {
+                best = temp.firstElement();
+                for (Quest q : temp)
+                    if (current.compareTo(best) > current.compareTo(q))
+                        best = q;
+                current = best;
+            }
+
+            // add new antecedents to the deque
+            for (Vector<Quest> antecedents : current.getAntecedents()) {
+                pending.add(antecedents);
+                for (Quest q : antecedents)
+                    left.remove(q);
+            }
+
+            // update the results
+            result.add(0, current);
         }
+
         return result;
     }
 
