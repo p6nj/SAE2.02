@@ -8,12 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Vector;
 
 public class Scenario {
     public int number;
-    protected ArrayList<Quest> quests = new ArrayList<Quest>();
+    protected Vector<Quest> quests = new Vector<>();
 
     /**
      * Reads and returns the contents of a scenario as a string. This is a
