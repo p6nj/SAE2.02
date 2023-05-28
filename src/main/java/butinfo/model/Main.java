@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) throws NoSuchElementException, FileNotFoundException, IOException {
-        System.out.println(new Graphe(1));
+        Scenario s = new Scenario(1);
+        System.out.println(s);
     }
 }
