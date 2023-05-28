@@ -43,7 +43,8 @@ public class Scenario {
             if (!line.isBlank())
                 quests.add(parse(line));
         }
-        for (Quest quest : quests) quest.antecedentsFromInt(this);
+        for (Quest quest : quests)
+            quest.antecedentsFromInt(this);
     }
 
     public Scenario(String fileContents) throws NoSuchElementException, FileNotFoundException, IOException {
@@ -51,7 +52,8 @@ public class Scenario {
             if (!line.isBlank())
                 quests.add(parse(line));
         }
-        for (Quest quest : quests) quest.antecedentsFromInt(this);
+        for (Quest quest : quests)
+            quest.antecedentsFromInt(this);
     }
 
     /**
@@ -100,40 +102,6 @@ public class Scenario {
         }
         result = result + quests.get(quests.size() - 1);
         return result;
-    }
-
-    /**
-     * Prints debug message to System. out. For debugging purposes only (to know
-     * when and if there is debug content printed out).
-     * 
-     * @param s - the message to be printed
-     */
-    private void debug(String s) {
-        System.out.println("DEBUG: " + s);
-    }
-
-    /**
-     * Prints debug information to System. out. This is a convenience method for
-     * {@link #debug(String s)}.
-     * 
-     * @param s - String array to be printed
-     */
-    private void debug(String[] s) {
-        System.out.print("DEBUG: [");
-        for (String s2 : s) {
-            System.out.print("\n\t" + s2 + ',');
-        }
-        System.out.print("\n]\n");
-    }
-
-    /**
-     * Prints a debug integer. This is a convenience method for
-     * {@link #debug(String[] s)}.
-     * 
-     * @param i - the integer to print to the debug output stream
-     */
-    private void debug(int i) {
-        debug(String.format("%d", i));
     }
 
 }
