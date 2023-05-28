@@ -1,5 +1,6 @@
 package butinfo.model;
 
+import java.util.List;
 import java.util.Vector;
 
 public class Quest implements Comparable<Quest> {
@@ -29,6 +30,22 @@ public class Quest implements Comparable<Quest> {
                                 temp.add(context.getQuest(ant));
                         antecedents.add(temp);
                 }
+        }
+
+        public boolean accessible(Vector<Quest> done) {
+                boolean temp = false;
+                for (Vector<Quest> antclass : antecedents) {
+                        for (Quest ant : antclass) {
+                                if (done.contains(ant)) {
+                                        temp = true;
+                                        break;
+                                }
+                        }
+                        if (!temp)
+                                return false;
+                        temp = false;
+                }
+                return true;
         }
 
         /**
