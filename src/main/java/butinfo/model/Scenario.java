@@ -43,6 +43,7 @@ public class Scenario {
             if (!line.isBlank())
                 quests.add(parse(line));
         }
+        for (Quest quest : quests) quest.antecedentsFromInt(this);
     }
 
     public Scenario(String fileContents) throws NoSuchElementException, FileNotFoundException, IOException {
@@ -50,6 +51,7 @@ public class Scenario {
             if (!line.isBlank())
                 quests.add(parse(line));
         }
+        for (Quest quest : quests) quest.antecedentsFromInt(this);
     }
 
     /**
