@@ -5,6 +5,7 @@ import java.util.Vector;
 public class Quest implements Comparable<Quest> {
         public int id;
         private int t, xp;
+
         public Coordinates coords;
         private Vector<Vector<Integer>> __antecedents;
         private Vector<Vector<Quest>> antecedents;
@@ -115,5 +116,13 @@ public class Quest implements Comparable<Quest> {
 
         public int getId() {
                 return id;
+        }
+
+        public int getXp() {
+                return xp;
+        }
+
+        public int getTime() {
+                return t;
         }
 }

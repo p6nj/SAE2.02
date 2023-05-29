@@ -1,8 +1,6 @@
 package butinfo.model;
 
-import javax.print.attribute.standard.MediaSize.Other;
-
-public class Coordinates implements Comparable<Coordinates>{
+public class Coordinates implements Comparable<Coordinates> {
     int x, y;
 
     public Coordinates(int x, int y) {
@@ -24,7 +22,7 @@ public class Coordinates implements Comparable<Coordinates>{
         return String.format("(%d, %d)", x, y);
     }
 
-    public int compareTo(Coordinates other){
-        return Math.abs(x-other.x) + Math.abs(y-other.y);
+    public int compareTo(Coordinates other) {
+        return Math.abs(x - other.x) + Math.abs(y - other.y);
     }
 }

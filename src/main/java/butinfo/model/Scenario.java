@@ -106,13 +106,14 @@ public class Scenario {
     }
 
     public Vector<Quest> efficace1() {
+        int xp = 0;
         // prepare table
         Vector<Quest> result = new Vector<>();
-        Quest current = getQuest(0);
+        Quest current = getQuest(0); // current quest
         result.add(current);
-        Vector<Quest> left = quests;
+        Vector<Quest> left = quests; // available quests
         left.remove(current);
-        ArrayDeque<Vector<Quest>> pending = new ArrayDeque<>();
+        Vector<Vector<Quest>> pending = new Vector<>();
         for (Vector<Quest> antecedents : current.getAntecedents()) {
             pending.add(antecedents);
             for (Quest q : antecedents)
@@ -122,32 +123,64 @@ public class Scenario {
         // resolved just when the current quest will be chosen
 
         Vector<Quest> temp; // where the antecedent group is put before resolution
-        Quest best; // the best quest to choose next for resolution
+        Quest best, best2; // the best quest to choose next for resolution
         while (!pending.isEmpty()) {
-            // new current from the deque
-            /*
-             * TODO: locally evaluate & resolve each candidate of the queue before polling
-             * to ensure always picking the closest one
-             */
-            /*
-             * TODO: remove possible duplicates in the antecedents queue
-             */
-            temp = pending.poll();
+            // new current from the queue
+            // there may be duplicates in the pending queue /!\
+            temp = pending.firstElement();// best next vector
             if (temp.size() == 1)
-                current = temp.firstElement();
+                best = temp.firstElement();// best next quest in the best next vector
             else {
                 best = temp.firstElement();
                 for (Quest q : temp)
-                    if (current.compareTo(best) > current.compareTo(q))
+                    if (current.compareTo(best) > current.compareTo(q))// current quest
                         best = q;
-                current = best;
             }
+            for (Vector<Quest> candidate : pending) {
+                if (temp.size() == 1)
+                    best2 = temp.firstElement();
+                else {
+                    best2 = temp.firstElement();
+                    for (Quest q : temp)
+                        if (current.compareTo(best2) > current.compareTo(q))// current quest
+                            best2 = q;
+                }
+                if (current.compareTo(best) > current.compareTo(best2))// current quest
+                {
+                    temp = candidate;
+                    best = best2;
+                }
+            } // the best next vector is temp; the best next quest is best
+            pending.remove(temp);
+            current = best;
+            temp.remove(best);
+            for (Quest q : temp)
+                left.add(q);
+
+            // current may be the last quest (0), verify that the XP is sufficient
+            if (current.getId() == 0 && xp < current.getXp()) {
+                Quest chosen;
+                do {// TODO:
+                    // put every quest from the quests left in the result at the best place and
+                    // compare each combination to find the most suitable one to reach the target XP
+                    // in the least amount of movements.
+                    System.err.println("⚠️ XP compensation not yet fully implemented.");
+                    System.exit(1);
+                    chosen = left.remove(0);
+                    result.add(0, chosen);
+                    xp += chosen.getXp();
+                } while (xp < current.getXp());
+            } else
+                xp += current.getXp();
 
             // add new antecedents to the deque
             for (Vector<Quest> antecedents : current.getAntecedents()) {
-                pending.add(antecedents);
-                for (Quest q : antecedents)
+                for (Quest q : antecedents) {
+                    if (!left.contains(q))
+                        continue;
                     left.remove(q);
+                }
+                pending.add(antecedents);
             }
 
             // update the results
