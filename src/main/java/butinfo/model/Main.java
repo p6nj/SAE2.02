@@ -10,9 +10,10 @@ public class Main {
         Scenario s = new Scenario(1);
         int total = 0;
         for (Quest q : s.efficace1()) {
-            if (q.getId() == 0)
+            System.out.print(q.getId());
+            if (q.getId() != 0)
                 total += q.getXp();
         }
-        System.out.println(total);
+        System.out.println("\n" + total);
     }
 }

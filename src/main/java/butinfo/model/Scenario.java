@@ -111,7 +111,7 @@ public class Scenario {
         Vector<Quest> result = new Vector<>();
         Quest current = getQuest(0); // current quest
         result.add(current);
-        Vector<Quest> left = quests; // available quests
+        Vector<Quest> left = (Vector<Quest>) quests.clone(); // available quests
         left.remove(current);
         Vector<Vector<Quest>> pending = new Vector<>();
         for (Vector<Quest> antecedents : current.getAntecedents()) {
@@ -137,11 +137,11 @@ public class Scenario {
                         best = q;
             }
             for (Vector<Quest> candidate : pending) {
-                if (temp.size() == 1)
-                    best2 = temp.firstElement();
+                if (candidate.size() == 1)
+                    best2 = candidate.firstElement();
                 else {
-                    best2 = temp.firstElement();
-                    for (Quest q : temp)
+                    best2 = candidate.firstElement();
+                    for (Quest q : candidate)
                         if (current.compareTo(best2) > current.compareTo(q))// current quest
                             best2 = q;
                 }
@@ -157,20 +157,7 @@ public class Scenario {
             for (Quest q : temp)
                 left.add(q);
 
-            // current may be the last quest (0), verify that the XP is sufficient
-            if (current.getId() == 0 && xp < current.getXp()) {
-                Quest chosen;
-                do {// TODO:
-                    // put every quest from the quests left in the result at the best place and
-                    // compare each combination to find the most suitable one to reach the target XP
-                    // in the least amount of movements.
-                    System.err.println("⚠️ XP compensation not yet fully implemented.");
-                    System.exit(1);
-                    chosen = left.remove(0);
-                    result.add(0, chosen);
-                    xp += chosen.getXp();
-                } while (xp < current.getXp());
-            } else
+            if (current.getId() != 0)
                 xp += current.getXp();
 
             // add new antecedents to the deque
@@ -185,6 +172,23 @@ public class Scenario {
 
             // update the results
             result.add(0, current);
+        }
+
+        // current may be the last quest (0), verify that the XP is sufficient
+        int needed = quests.get(quests.size() - 1).getXp();
+        System.out.println(needed);
+        if (xp < needed) {
+            Quest chosen;
+            do {// TODO:
+                // put every quest from the quests left in the result at the best place and
+                // compare each combination to find the most suitable one to reach the target XP
+                // in the least amount of movements.
+                System.err.println("⚠️ XP compensation not yet fully implemented.");
+                System.exit(1);
+                chosen = left.remove(0);
+                result.add(0, chosen);
+                xp += chosen.getXp();
+            } while (xp < needed);
         }
 
         return result;
