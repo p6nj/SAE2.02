@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
@@ -175,18 +174,17 @@ public class Scenario {
         }
 
         // current may be the last quest (0), verify that the XP is sufficient
-        int needed = quests.get(quests.size() - 1).getXp();
-        System.out.println(needed);
+        int needed = getQuest(0).getXp();
         if (xp < needed) {
             Quest chosen;
-            do {// TODO:
-                // put every quest from the quests left in the result at the best place and
-                // compare each combination to find the most suitable one to reach the target XP
-                // in the least amount of movements.
-                System.err.println("⚠️ XP compensation not yet fully implemented.");
-                System.exit(1);
-                chosen = left.remove(0);
-                result.add(0, chosen);
+            do {
+                current = result.elementAt(result.size() - 2);
+                chosen = left.elementAt(0);
+                for (Quest candidate : left)
+                    if (current.compareTo(chosen) > current.compareTo(candidate))
+                        chosen = candidate;
+                left.remove(chosen);
+                result.add(result.size() - 1, chosen);
                 xp += chosen.getXp();
             } while (xp < needed);
         }
