@@ -215,4 +215,28 @@ public class Scenario {
         return result;
     }
 
+    /**
+     * Chooses a valid path that goes through every quest.
+     * 
+     * @return Vector<Quest>: one possible path
+     * @throws UnaccessibleQuestException: one quest remains unreachable and makes
+     *                                     finding a path impossible
+     */
+    public Vector<Quest> exhaustive1() throws UnaccessibleQuestException {
+        Vector<Quest> result = new Vector<>();
+        Vector<Quest> left = (Vector<Quest>) quests.clone(); // available quests
+        boolean changed = true;
+        while (changed && !left.isEmpty()) {
+            changed = false;
+            for (int i = 0; i < left.size(); i++)
+                if (left.elementAt(i).accessible(result)) {
+                    changed = true;
+                    result.add(left.remove(i));
+                }
+        }
+        if (!changed) // there is still at least one quest left
+            throw new UnaccessibleQuestException(left.elementAt(0)); // the first quest left is stated as unaccessible
+        return result;
+    }
+
 }
