@@ -104,7 +104,30 @@ public class Scenario {
         return result;
     }
 
+    /**
+     * Chooses a path to the final quest using always the shortest path.
+     * 
+     * @return Vector<Quest>: the best path with the required XP
+     */
     public Vector<Quest> efficace1() {
+        return efficace(new QuestComparator() {
+            @Override
+            public boolean compare(Quest current, Quest best, Quest candidate) {
+                // Use the candidate quest only if the distance from the current quest to the
+                // candidate is shorter than the distance between the current quest and the
+                // previously best next quest
+                return current.compareTo(best) > current.compareTo(candidate);
+            }
+        });
+    }
+
+    /**
+     * Efficace* backbone function.
+     * 
+     * @param comp: comparator used to choose between multiple quests
+     * @return Vector<Quest>: the best path with the required XP
+     */
+    private Vector<Quest> efficace(QuestComparator comp) {
         int xp = 0;
         // prepare table
         Vector<Quest> result = new Vector<>();
@@ -132,7 +155,7 @@ public class Scenario {
             else {
                 best = temp.firstElement();
                 for (Quest q : temp)
-                    if (current.compareTo(best) > current.compareTo(q))// current quest
+                    if (comp.compare(current, best, q))
                         best = q;
             }
             for (Vector<Quest> candidate : pending) {
@@ -141,10 +164,10 @@ public class Scenario {
                 else {
                     best2 = candidate.firstElement();
                     for (Quest q : candidate)
-                        if (current.compareTo(best2) > current.compareTo(q))// current quest
+                        if (comp.compare(current, best2, q))// current quest
                             best2 = q;
                 }
-                if (current.compareTo(best) > current.compareTo(best2))// current quest
+                if (comp.compare(current, best, best2))// current quest
                 {
                     temp = candidate;
                     best = best2;
@@ -181,7 +204,7 @@ public class Scenario {
                 current = result.elementAt(result.size() - 2);
                 chosen = left.elementAt(0);
                 for (Quest candidate : left)
-                    if (current.compareTo(chosen) > current.compareTo(candidate))
+                    if (comp.compare(current, chosen, candidate))
                         chosen = candidate;
                 left.remove(chosen);
                 result.add(result.size() - 1, chosen);
