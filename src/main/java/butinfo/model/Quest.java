@@ -3,10 +3,8 @@ package butinfo.model;
 import java.util.Vector;
 
 public class Quest implements Comparable<Quest> {
-        public int id;
-        private int t, xp;
-
-        public Coordinates coords;
+        private int id, t, xp;
+        private Coordinates coords;
         private Vector<Vector<Integer>> __antecedents;
         private Vector<Vector<Quest>> antecedents;
         private String name;

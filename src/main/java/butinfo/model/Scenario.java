@@ -81,7 +81,7 @@ public class Scenario {
      */
     protected Quest getQuest(int id) throws NoSuchElementException {
         for (Quest quest : quests) {
-            if (quest.id == id)
+            if (quest.getId() == id)
                 return quest;
         }
         throw (new NoSuchElementException());
