@@ -45,14 +45,17 @@ public class Quest implements Comparable<Quest> {
 
         /**
          * Shows the accessibility from a set of done quests. If at least one quest from
-         * each antecedent group is done, this quest can be done.
+         * each antecedent group is done, this quest can be done. This also checks XP
+         * for quest 0. Function used mainly for {@link Scenario#exhaustive1()}.
          * 
          * @param done: quests already done
          * @return boolean satisfying the affirmation "This quest can be accessed."
          * @see java.util.Vector#contains(Object)
+         * @see Scenario#exhaustive1()
          */
         public boolean accessible(Vector<Quest> done) {
                 boolean temp = false;
+                // antecedent check
                 for (Vector<Quest> antclass : antecedents) {
                         for (Quest ant : antclass) {
                                 if (done.contains(ant)) {
@@ -63,6 +66,13 @@ public class Quest implements Comparable<Quest> {
                         if (!temp)
                                 return false;
                         temp = false;
+                }
+                if (id == 0) { // final quest, it needs to pass an XP check
+                        int xp = 0;
+                        for (Quest q : done)
+                                xp += q.getXp();
+                        if (xp < this.xp)
+                                return false;
                 }
                 return true;
         }
