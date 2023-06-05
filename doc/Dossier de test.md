@@ -28,22 +28,36 @@ g
 | Responsable de la campagne de test : | Elias Moussamih                                                           |
 
 ### 2. Tests
-| Test 1                 |                                                                                                            |
+| Test 1    |                                                                                                            |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------- |
 | Identification :       | Version : 1.0                                                                                              |
 | Description :          | test sur la méthode accessible en utilisant la stratégie des boites blanches                               |
 | Resesources requises : | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement |
 | Responsable :          | Elias Moussamih                                                                                            |
 
-| Quetes effectués | Quête 0 | Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus   |
+|Partitions de test|
+|:---------------:|
+
+| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
+| :------- | :------------------------ | :---------------- | :-------------------- | :---------------------------- |
+| S1       | oui                       | X                 | X                     | le scénario est valide        |
+| S1       | non                       | oui               | oui                   | le scénario n'est pas valide|
+| S1       | non                       | non               | oui                   | le scénario n'est pas valide |
+| S1       | non                       | oui               | non                   | le scénario est valide        |
+
+
+|Données de test|
+|:---------------:|
+
+| Quetes effectués | Quête actuelle | Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus   |
 | :--------------- | :------ | :----------------------------------------- | :---------------------- | :------------------- |
-| 1,2              | non     |                                            | 2                       | quête accessible     |
-| 1,2              | non     |                                            | 3                       | quête non accessible |
-| X                | non     |                                            | X                       | quête accessible     |
-| 1,2              | oui     | oui                                        | 4                       | quête non accessible |
-| 1,2,3,4          | oui     | oui                                        | 4                       | quête accessible     |
-| 1,2              | oui     | non                                        | 4                       | quête non accessible |
-| 1,2,3,4          | oui     | non                                        | 4                       | quête non accessible |
+| 1,2              | 3     |                                            | 2                       | quête accessible     |
+| 1,2              | 5     |                                            | 4                       | quête non accessible |
+| X                | 1     |                                            | X                       | quête accessible     |
+| 1,2              | 0     | oui                                        | 4                       | quête non accessible |
+| 1,2,3,4          | 0     | oui                                        | 4                       | quête accessible     |
+| 1,2,3,4              | 0     | non                                        | 4                       | quête non accessible |
+| 1,2,3,4          | 0     | non                                        | 5                       | quête non accessible |
 
 
 
@@ -54,14 +68,25 @@ g
 | Resesources requises : | Ordinateur, visual studio code, méthode exhaustive ainsi que les méthodes nécéssaires à son fonctionnement |
 | Responsable :          | Elias Moussamih                                                                                            |
 
+|Partitions de test|
+|:----------------:|
+
 | Scénario | erreur |
 | :------- | :----- |
 | S1       | non    |
-| S1       | oui    |
+| S2       | oui    |
+
+|Données de test|
+|:----------------:|
+
+| Scénario | erreur |
+| :------- | :----- |
+| S1       | non    |
+| S2       | oui    |
 
 | Test 3                 |                                                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------- |
-| Identification :       | Version : 1.0                                                                                            |
+| Identification :       | Version : 1.      0                                                                                            |
 | Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches                               |
 | Resesources requises : | Ordinateur, visual studio code, méthode efficace ainsi que les méthodes nécéssaires à son fonctionnement |
 | Responsable :          | Elias Moussamih                                                                                          |
