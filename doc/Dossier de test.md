@@ -22,38 +22,56 @@ g
 | Contexte                             |                                                                           |
 | :----------------------------------- | :------------------------------------------------------------------------ |
 | Configuration logicielle :           | Visual Studio 1.74, Java Extension Pack 0.9, OpenJDK 11, Ubuntu 22.04 LTS |
-| Configuration matérielle :           | AMD® Ryzen 5 5600 × 6, RTX 3070 ti, 32GiB RAM                     |
+| Configuration matérielle :           | AMD® Ryzen 5 5600 × 6, RTX 3070 ti, 32GiB RAM                             |
 | Date de début :  3/02/2023           | Date de finalisation : semaine du 6/02/2023                               |
-| Tests à appliquer :                  | Test sur la méthode accessible, efficace  |
-| Responsable de la campagne de test : | Elias Moussamih|
+| Tests à appliquer :                  | Test sur la méthode accessible, efficace                                  |
+| Responsable de la campagne de test : | Elias Moussamih                                                           |
 
 ### 2. Tests
-| Test 1                 |           |
-| :--------------------- | :-------- |
-| Identification :       | Version : 1.0 |
-| Description :          | test sur la méthode accessible en utilisant la stratégie des boites blanches         |
-| Resesources requises : | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement         |
-| Responsable :          | Elias Moussamih         |
+| Test 1                 |                                                                                                            |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Identification :       | Version : 1.0                                                                                              |
+| Description :          | test sur la méthode accessible en utilisant la stratégie des boites blanches                               |
+| Resesources requises : | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement |
+| Responsable :          | Elias Moussamih                                                                                            |
 
-| Quetes effectués | Quête 0| Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus |
-| :----------- | :-------- | :----- | :------ | :------ | 
-1,2| non | | 2 | quête accessible |
-1,2| non | | 3 | quête non accessible |
-X | non  | | X | quête accessible |
-1,2 | oui | oui | 4 | quête non accessible |
-1,2,3,4 | oui | oui | 4 | quête accessible |
-1,2 | oui | non | 4 | quête non accessible |
-1,2,3,4 | oui | non | 4 | quête non accessible |
+| Quetes effectués | Quête 0 | Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus   |
+| :--------------- | :------ | :----------------------------------------- | :---------------------- | :------------------- |
+| 1,2              | non     |                                            | 2                       | quête accessible     |
+| 1,2              | non     |                                            | 3                       | quête non accessible |
+| X                | non     |                                            | X                       | quête accessible     |
+| 1,2              | oui     | oui                                        | 4                       | quête non accessible |
+| 1,2,3,4          | oui     | oui                                        | 4                       | quête accessible     |
+| 1,2              | oui     | non                                        | 4                       | quête non accessible |
+| 1,2,3,4          | oui     | non                                        | 4                       | quête non accessible |
 
 
 
-| Test 2                 |           |
-| :--------------------- | :-------- |
-| Identification :       | Version : 1.0 |
-| Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches         |
-| Resesources requises : | Ordinateur, visual studio code, méthode efficace ainsi que les méthodes nécéssaires à son fonctionnement         |
-| Responsable :          | Elias Moussamih         |
+| Test 2                 |                                                                                                            |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Identification :       | Version : 1.0                                                                                              |
+| Description :          | test sur la méthode exhaustive en utilisant la stratégie des boites blanches                               |
+| Resesources requises : | Ordinateur, visual studio code, méthode exhaustive ainsi que les méthodes nécéssaires à son fonctionnement |
+| Responsable :          | Elias Moussamih                                                                                            |
 
+| Scénario | erreur |
+| :------- | :----- |
+| S1       | non    |
+| S1       | oui    |
+
+| Test 3                 |                                                                                                          |
+| :--------------------- | :------------------------------------------------------------------------------------------------------- |
+| Identification :       | Version : 1.0                                                                                            |
+| Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches                               |
+| Resesources requises : | Ordinateur, visual studio code, méthode efficace ainsi que les méthodes nécéssaires à son fonctionnement |
+| Responsable :          | Elias Moussamih                                                                                          |
+
+| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
+| :------- | :------------------------ | :---------------- | :-------------------- | :---------------------------- |
+| S1       | oui                       | X                 | X                     | le scénario fonctionne        |
+| S1       | non                       | oui               | oui                   | le scénario ne fonctionne pas |
+| S1       | non                       | non               | oui                   | le scénario fonctionne pas    |
+| S1       | non                       | oui               | oui                   | le scénario fonctionne        |
 
 ### 3. Résultats
 | Test 1                       |                |

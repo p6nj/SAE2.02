@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) throws NoSuchElementException, FileNotFoundException, IOException {
-        Scenario s = new Scenario(0);
+        Scenario s = new Scenario(2);
         // int total = 0;
         // for (Quest q : s.efficace1()) {
         // System.out.print(q.getId());
