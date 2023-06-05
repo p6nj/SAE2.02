@@ -37,12 +37,12 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 
 ### 2. Tests
 #### 1. Test 1
-|                         |                                                                                                            |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------- |
-| Identification : access | Version : 1.0                                                                                              |
-| Description :           | test sur la méthode accessible en utilisant la stratégie des boites blanches                               |
-| Resesources requises :  | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement |
-| Responsable :           | Elias Moussamih                                                                                            |
+|                         |                                                                              |
+| :---------------------- | :--------------------------------------------------------------------------- |
+| Identification : access | Version : 1.0                                                                |
+| Description :           | test sur la méthode accessible en utilisant la stratégie des boites blanches |
+| Resesources requises :  | Ordinateur, visual studio code, méthode accessible et ses dépendances        |
+| Responsable :           | Elias Moussamih                                                              |
 
 ##### Partitions de test
 | Antécédents respectés | Quête 0 | XP respecté | Résultats attendus |
@@ -68,33 +68,37 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 
 ---
 #### 2. Test 2
-|                          |                                                                                                            |
-| :----------------------- | :--------------------------------------------------------------------------------------------------------- |
-| Identification : exhaust | Version : 1.0                                                                                              |
-| Description :            | test sur la méthode exhaustive en utilisant la stratégie des boites blanches                               |
-| Resesources requises :   | Ordinateur, visual studio code, méthode exhaustive ainsi que les méthodes nécéssaires à son fonctionnement |
-| Responsable :            | Elias Moussamih                                                                                            |
+|                          |                                                                                                     |
+| :----------------------- | :-------------------------------------------------------------------------------------------------- |
+| Identification : exhaust | Version : 1.0                                                                                       |
+| Description :            | test sur la méthode exhaustive en utilisant la stratégie des boites blanches, passe si pas d'erreur |
+| Resesources requises :   | Ordinateur, visual studio code, méthode exhaustive ainsi et ses dépendances                         |
+| Responsable :            | Elias Moussamih                                                                                     |
 
 ##### Partitions de test
 | Scénario | erreur |
 | :------- | :----- |
-| S1       | non    |
-| S2       | oui    |
+| *        | non    |
 
 ##### Données de test
 | Scénario | erreur |
 | :------- | :----- |
+| S0       | non    |
 | S1       | non    |
-| S2       | oui    |
+| S2       | non    |
+| S3       | non    |
+| S4       | non    |
+| S5       | non    |
+| S6       | non    |
 
 ---
 #### 3. Test 3
-|                        |                                                                                                          |
-| :--------------------- | :------------------------------------------------------------------------------------------------------- |
-| Identification : effic | Version : 1.0                                                                                            |
-| Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches                               |
-| Resesources requises : | Ordinateur, visual studio code, méthode efficace ainsi que les méthodes nécéssaires à son fonctionnement |
-| Responsable :          | Elias Moussamih                                                                                          |
+|                        |                                                                            |
+| :--------------------- | :------------------------------------------------------------------------- |
+| Identification : effic | Version : 1.0                                                              |
+| Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches |
+| Resesources requises : | Ordinateur, visual studio code, méthode efficace et ses dépendances        |
+| Responsable :          | Elias Moussamih                                                            |
 
 ##### Partitions de test
 | Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
