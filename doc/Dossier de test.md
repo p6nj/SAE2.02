@@ -45,23 +45,26 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | Responsable :           | Elias Moussamih                                                                                            |
 
 ##### Partitions de test
-| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu            |
-| :------- | :------------------------ | :---------------- | :-------------------- | :--------------------------- |
-| S1       | oui                       | X                 | X                     | le scénario est valide       |
-| S1       | non                       | oui               | oui                   | le scénario n'est pas valide |
-| S1       | non                       | non               | oui                   | le scénario n'est pas valide |
-| S1       | non                       | oui               | non                   | le scénario est valide       |
+| Antécédents respectés | Quête 0 | XP respecté | Résultats attendus |
+| :-------------------- | :------ | :---------- | :----------------- |
+| oui                   | non     | /           | vrai               |
+| non                   | non     | /           | faux               |
+| pas d'antécédents     | non     | /           | vrai               |
+| oui                   | oui     | oui         | vrai               |
+| oui                   | oui     | non         | faux               |
+| non                   | oui     | non         | faux               |
+| non                   | oui     | oui         | faux               |
 
 ##### Données de test
-| Quetes effectués | Quête actuelle | Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus   |
-| :--------------- | :------------- | :----------------------------------------- | :---------------------- | :------------------- |
-| 1,2              | 3              |                                            | 2                       | quête accessible     |
-| 1,2              | 5              |                                            | 4                       | quête non accessible |
-| X                | 1              |                                            | X                       | quête accessible     |
-| 1,2              | 0              | oui                                        | 4                       | quête non accessible |
-| 1,2,3,4          | 0              | oui                                        | 4                       | quête accessible     |
-| 1,2,3,4          | 0              | non                                        | 4                       | quête non accessible |
-| 1,2,3,4          | 0              | non                                        | 5                       | quête non accessible |
+| Quêtes effectués | Quête actuelle | Xp nécessaire atteint (quête 0 uniquement) | Antécédent(s) de la quête | Résultats Attendus |
+| :--------------- | :------------- | :----------------------------------------- | :------------------------ | :----------------- |
+| 1,2              | 3              | /                                          | 2                         | vrai               |
+| 1,2              | 5              | /                                          | 4                         | faux               |
+| X                | 1              | /                                          | /                         | vrai               |
+| 1,2              | 0              | oui                                        | 4                         | faux               |
+| 1,2,3,4          | 0              | oui                                        | 4                         | vrai               |
+| 1,2,3,4          | 0              | non                                        | 4                         | faux               |
+| 1,2,3,4          | 0              | non                                        | 5                         | faux               |
 
 ---
 #### 2. Test 2
