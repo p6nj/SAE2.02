@@ -32,7 +32,7 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | Configuration logicielle :           | Visual Studio 1.74, Java Extension Pack 0.9, OpenJDK 11, Ubuntu 22.04 LTS |
 | Configuration matérielle :           | AMD® Ryzen 5 5600 × 6, RTX 3070 ti, 32GiB RAM                             |
 | Date de début :  3/02/2023           | Date de finalisation : semaine du 6/02/2023                               |
-| Tests à appliquer :                  | Test sur la méthode accessible, efficace                                  |
+| Tests à appliquer :                  | Test sur la méthode accessible, efficace et exhaustive                    |
 | Responsable de la campagne de test : | Elias Moussamih                                                           |
 
 ### 2. Tests
@@ -101,12 +101,12 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | Responsable :          | Elias Moussamih                                                            |
 
 ##### Partitions de test
-| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
-| :------- | :------------------------ | :---------------- | :-------------------- | :---------------------------- |
-| S1       | oui                       | X                 | X                     | le scénario fonctionne        |
-| S1       | non                       | oui               | oui                   | le scénario ne fonctionne pas |
-| S1       | non                       | non               | oui                   | le scénario fonctionne pas    |
-| S1       | non                       | oui               | oui                   | le scénario fonctionne        |
+| Type de scénario                                                                                        | Chemin attendu |
+| :------------------------------------------------------------------------------------------------------ | :------------- |
+| Scénario sans choix (C->B, B->A)                                                                        | ABC            |
+| Scénario avec choix (D->C, D->B, C->A, B->A, avec ABD meilleur que ACD)                                 | ABD            |
+| Scénario sans choix avec compensation d'XP nécessaire (C->B, B->A, D avec D nécessaire à C question XP) | ABDC           |
+| Scénario avec choix et compensation d'XP nécessaire                                                     | non            |
 
 ### 3. Résultats
 | Test 1                       |                |
