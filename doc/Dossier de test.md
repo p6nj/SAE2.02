@@ -6,6 +6,14 @@
   - [3. Description des informations à enregistrer pour le test](#3-description-des-informations-à-enregistrer-pour-le-test)
     - [1. Campagne de test](#1-campagne-de-test)
     - [2. Tests](#2-tests)
+      - [1. Test 1](#1-test-1)
+        - [Partitions de test](#partitions-de-test)
+        - [Données de test](#données-de-test)
+      - [2. Test 2](#2-test-2)
+        - [Partitions de test](#partitions-de-test-1)
+        - [Données de test](#données-de-test-1)
+      - [3. Test 3](#3-test-3)
+        - [Partitions de test](#partitions-de-test-2)
     - [3. Résultats](#3-résultats)
     - [4. Conclusions](#4-conclusions)
   
@@ -16,7 +24,7 @@ Ce document est dossier de tests qui a pour objectif d’expliquer les tests que
 Pour les tests, nous avons décidé d'utiliser des tests de boîtes blanches dans le but de vérifier si la réponse obtenue correspond bien à celle que nous avons prévue pour chaque situation pouvant se présenter lors de l'exécution du programme. Si le programme produit la réponse attendue pour chaque situation possible, théoriquement, il fonctionnera pour n'importe quel scénario que nous lui soumettrons.
 
 ## 3. Description des informations à enregistrer pour le test
-g
+Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. Les résultats seront visibles dans l'onglet du side pane de VSCode.
 
 ### 1. Campagne de test
 | Contexte                             |                                                                           |
@@ -28,69 +36,64 @@ g
 | Responsable de la campagne de test : | Elias Moussamih                                                           |
 
 ### 2. Tests
-| Test 1    |                                                                                                            |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------- |
-| Identification :       | Version : 1.0                                                                                              |
-| Description :          | test sur la méthode accessible en utilisant la stratégie des boites blanches                               |
-| Resesources requises : | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement |
-| Responsable :          | Elias Moussamih                                                                                            |
+#### 1. Test 1
+|                         |                                                                                                            |
+| :---------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Identification : access | Version : 1.0                                                                                              |
+| Description :           | test sur la méthode accessible en utilisant la stratégie des boites blanches                               |
+| Resesources requises :  | Ordinateur, visual studio code, méthode accessible ainsi que les méthodes nécéssaires à son fonctionnement |
+| Responsable :           | Elias Moussamih                                                                                            |
 
-|Partitions de test|
-|:---------------:|
-
-| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
-| :------- | :------------------------ | :---------------- | :-------------------- | :---------------------------- |
-| S1       | oui                       | X                 | X                     | le scénario est valide        |
-| S1       | non                       | oui               | oui                   | le scénario n'est pas valide|
+##### Partitions de test
+| Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu            |
+| :------- | :------------------------ | :---------------- | :-------------------- | :--------------------------- |
+| S1       | oui                       | X                 | X                     | le scénario est valide       |
+| S1       | non                       | oui               | oui                   | le scénario n'est pas valide |
 | S1       | non                       | non               | oui                   | le scénario n'est pas valide |
-| S1       | non                       | oui               | non                   | le scénario est valide        |
+| S1       | non                       | oui               | non                   | le scénario est valide       |
 
-
-|Données de test|
-|:---------------:|
-
+##### Données de test
 | Quetes effectués | Quête actuelle | Xp nécessaire atteint (quête 0 uniquement) | Antécédents de la quête | Résultats Attendus   |
-| :--------------- | :------ | :----------------------------------------- | :---------------------- | :------------------- |
-| 1,2              | 3     |                                            | 2                       | quête accessible     |
-| 1,2              | 5     |                                            | 4                       | quête non accessible |
-| X                | 1     |                                            | X                       | quête accessible     |
-| 1,2              | 0     | oui                                        | 4                       | quête non accessible |
-| 1,2,3,4          | 0     | oui                                        | 4                       | quête accessible     |
-| 1,2,3,4              | 0     | non                                        | 4                       | quête non accessible |
-| 1,2,3,4          | 0     | non                                        | 5                       | quête non accessible |
+| :--------------- | :------------- | :----------------------------------------- | :---------------------- | :------------------- |
+| 1,2              | 3              |                                            | 2                       | quête accessible     |
+| 1,2              | 5              |                                            | 4                       | quête non accessible |
+| X                | 1              |                                            | X                       | quête accessible     |
+| 1,2              | 0              | oui                                        | 4                       | quête non accessible |
+| 1,2,3,4          | 0              | oui                                        | 4                       | quête accessible     |
+| 1,2,3,4          | 0              | non                                        | 4                       | quête non accessible |
+| 1,2,3,4          | 0              | non                                        | 5                       | quête non accessible |
 
+---
+#### 2. Test 2
+|                          |                                                                                                            |
+| :----------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Identification : exhaust | Version : 1.0                                                                                              |
+| Description :            | test sur la méthode exhaustive en utilisant la stratégie des boites blanches                               |
+| Resesources requises :   | Ordinateur, visual studio code, méthode exhaustive ainsi que les méthodes nécéssaires à son fonctionnement |
+| Responsable :            | Elias Moussamih                                                                                            |
 
-
-| Test 2                 |                                                                                                            |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------- |
-| Identification :       | Version : 1.0                                                                                              |
-| Description :          | test sur la méthode exhaustive en utilisant la stratégie des boites blanches                               |
-| Resesources requises : | Ordinateur, visual studio code, méthode exhaustive ainsi que les méthodes nécéssaires à son fonctionnement |
-| Responsable :          | Elias Moussamih                                                                                            |
-
-|Partitions de test|
-|:----------------:|
-
+##### Partitions de test
 | Scénario | erreur |
 | :------- | :----- |
 | S1       | non    |
 | S2       | oui    |
 
-|Données de test|
-|:----------------:|
-
+##### Données de test
 | Scénario | erreur |
 | :------- | :----- |
 | S1       | non    |
 | S2       | oui    |
 
-| Test 3                 |                                                                                                          |
+---
+#### 3. Test 3
+|                        |                                                                                                          |
 | :--------------------- | :------------------------------------------------------------------------------------------------------- |
-| Identification :       | Version : 1.      0                                                                                            |
+| Identification : effic | Version : 1.0                                                                                            |
 | Description :          | test sur la méthode efficace en utilisant la stratégie des boites blanches                               |
 | Resesources requises : | Ordinateur, visual studio code, méthode efficace ainsi que les méthodes nécéssaires à son fonctionnement |
 | Responsable :          | Elias Moussamih                                                                                          |
 
+##### Partitions de test
 | Scénario | Situation sans antécédent | Antécédent valide | Antécédent non valide | Résulatat attendu             |
 | :------- | :------------------------ | :---------------- | :-------------------- | :---------------------------- |
 | S1       | oui                       | X                 | X                     | le scénario fonctionne        |
