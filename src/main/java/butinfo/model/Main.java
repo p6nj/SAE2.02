@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 public class Main {
     public static void main(String[] args) throws NoSuchElementException, FileNotFoundException, IOException {
-        Scenario s = new Scenario(2);
+        Scenario s = new Scenario(1);
         // int total = 0;
         // for (Quest q : s.efficace1()) {
         // System.out.print(q.getId());
@@ -14,12 +14,9 @@ public class Main {
         // total += q.getXp();
         // }
         // System.out.println("\n" + total);
-        try {
-            for (Quest q : s.exhaustive1())
-                System.out.print(q.getId());
-        } catch (UnaccessibleQuestException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
+        for (Quest q : s.efficace1())
+            System.out.print(q.getId());
+
     }
 }

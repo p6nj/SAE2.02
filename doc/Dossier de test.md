@@ -14,6 +14,10 @@
         - [Données de test](#données-de-test-1)
       - [3. Test 3](#3-test-3)
         - [Partitions de test](#partitions-de-test-2)
+        - [Données de test](#données-de-test-2)
+      - [4. Test 4](#4-test-4)
+        - [Partitions de test](#partitions-de-test-3)
+        - [Données de test](#données-de-test-3)
     - [3. Résultats](#3-résultats)
     - [4. Conclusions](#4-conclusions)
   
@@ -27,13 +31,13 @@ Pour les tests, nous avons décidé d'utiliser des tests de boîtes blanches dan
 Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. Les résultats seront visibles dans l'onglet du side pane de VSCode.
 
 ### 1. Campagne de test
-| Contexte                             |                                                                           |
-| :----------------------------------- | :------------------------------------------------------------------------ |
-| Configuration logicielle :           | Visual Studio 1.74, Java Extension Pack 0.9, OpenJDK 11, Ubuntu 22.04 LTS |
-| Configuration matérielle :           | AMD® Ryzen 5 5600 × 6, RTX 3070 ti, 32GiB RAM                             |
-| Date de début :  3/02/2023           | Date de finalisation : semaine du 6/02/2023                               |
-| Tests à appliquer :                  | Test sur la méthode accessible, efficace et exhaustive                    |
-| Responsable de la campagne de test : | Elias Moussamih                                                           |
+| Contexte                             |                                                                                         |
+| :----------------------------------- | :-------------------------------------------------------------------------------------- |
+| Configuration logicielle :           | Visual Studio 1.74, Java Extension Pack 0.9, OpenJDK 11, Ubuntu 22.04 LTS               |
+| Configuration matérielle :           | AMD® Ryzen 5 5600 × 6, RTX 3070 ti, 32GiB RAM                                           |
+| Date de début :  4/06/2023           | Date de finalisation : semaine du 6/02/2023                                             |
+| Tests à appliquer :                  | Test sur la méthode accessible, efficace, exhaustive et sur le système de sérialisation |
+| Responsable de la campagne de test : | Elias Moussamih                                                                         |
 
 ### 2. Tests
 #### 1. Test 1
@@ -78,7 +82,7 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 ##### Partitions de test
 | Scénario | erreur |
 | :------- | :----- |
-| *        | non    |
+| S        | non    |
 
 ##### Données de test
 | Scénario | erreur |
@@ -90,6 +94,10 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | S4       | non    |
 | S5       | non    |
 | S6       | non    |
+| S7       | non    |
+| S8       | non    |
+| S9       | non    |
+| S10      | non    |
 
 ---
 #### 3. Test 3
@@ -101,12 +109,52 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | Responsable :          | Elias Moussamih                                                            |
 
 ##### Partitions de test
-| Type de scénario                                                                                        | Chemin attendu |
-| :------------------------------------------------------------------------------------------------------ | :------------- |
-| Scénario sans choix (C->B, B->A)                                                                        | ABC            |
-| Scénario avec choix (D->C, D->B, C->A, B->A, avec ABD meilleur que ACD)                                 | ABD            |
-| Scénario sans choix avec compensation d'XP nécessaire (C->B, B->A, D avec D nécessaire à C question XP) | ABDC           |
-| Scénario avec choix et compensation d'XP nécessaire                                                     | non            |
+| Type de scénario                                                                                                                                                                     | Chemin attendu |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- |
+| Scénario sans choix (<u>C</u>->B, B->A)                                                                                                                                              | ABC            |
+| Scénario avec choix (<u>D</u>->C, <u>D</u>->B, C->A, B->A, avec ABD meilleur que ACD en terme de distance)                                                                           | ABD            |
+| Scénario sans choix avec compensation d'XP nécessaire (<u>C</u>->B, B->A, D avec D nécessaire à C question XP)                                                                       | ABDC           |
+| Scénario avec choix et compensation d'XP nécessaire (<u>E</u>->D, <u>E</u>->C, D->B, C->B, B->A, D avec D nécessaire à E question XP et ABCE meilleur que ABDE en terme de distance) | ABCDE          |
+
+##### Données de test
+Soit le scénario S$\alpha$ défini par ces antécédents: <u>C</u>->B, B->A.
+Soit le scénario S$\beta$ défini par ces antécédents: <u>C</u>->B, B->A, D avec D nécessaire à C.
+| Scénario  | Chemin attendu |
+| :-------- | :------------- |
+| S$\alpha$ | ABC            |
+| S0        | 1240           |
+| S$\beta$  | ABDC           |
+| S1        | 143250         |
+
+
+---
+#### 4. Test 4
+|                        |                                                                                |
+| :--------------------- | :----------------------------------------------------------------------------- |
+| Identification : scen  | Version : 1.0                                                                  |
+| Description :          | test sur les méthodes de sérialisation en utilisant la stratégie boîte noire   |
+| Resesources requises : | Ordinateur, visual studio code, méthodes de sérialisation et leurs dépendances |
+| Responsable :          | Breval Ferrari                                                                 |
+
+##### Partitions de test
+| Scénario | contenu du fichier == scénario sérialisé |
+| :------- | :--------------------------------------- |
+| S        | oui                                      |
+
+##### Données de test
+| Scénario | contenu du fichier == scénario sérialisé |
+| :------- | :--------------------------------------- |
+| S0       | oui                                      |
+| S1       | oui                                      |
+| S2       | oui                                      |
+| S3       | oui                                      |
+| S4       | oui                                      |
+| S5       | oui                                      |
+| S6       | oui                                      |
+| S7       | oui                                      |
+| S8       | oui                                      |
+| S9       | oui                                      |
+| S10      | oui                                      |
 
 ### 3. Résultats
 | Test 1                       |                |
