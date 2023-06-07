@@ -2277,7 +2277,7 @@
 											"top": 148,
 											"width": 293.8330078125,
 											"height": 13,
-											"text": "#getQuest(id: int): Quest",
+											"text": "+getQuest(id: int): Quest",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6455,7 +6455,6 @@
 										"$ref": "AAAAAAGIfAdsBpED/NI="
 									},
 									"name": "getQuest",
-									"visibility": "protected",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
