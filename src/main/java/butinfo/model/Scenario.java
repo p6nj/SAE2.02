@@ -110,15 +110,11 @@ public class Scenario {
      * @return Vector<Quest>: the best path with the required XP
      */
     public Vector<Quest> efficace1() {
-        return efficace(new QuestComparator() {
-            @Override
-            public boolean compare(Quest current, Quest best, Quest candidate) {
-                // Use the candidate quest only if the distance from the current quest to the
-                // candidate is shorter than the distance between the current quest and the
-                // previously best next quest
-                return current.compareTo(best) > current.compareTo(candidate);
-            }
-        });
+        // Use the candidate quest only if the distance from the current quest to the
+        // candidate is shorter than the distance between the current quest and the
+        // previously best next quest
+        return efficace(
+                (Quest current, Quest best, Quest candidate) -> current.compareTo(best) > current.compareTo(candidate));
     }
 
     /**
