@@ -23,6 +23,6 @@ public class Scen {
   }
 
   static IntStream argsProviderFactory() {
-    return IntStream.range(0, 10);
+    return IntStream.range(0, 11);
   }
 }
