@@ -8,14 +8,14 @@ import java.util.NoSuchElementException;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import butinfo.model.Scenario;
 
 public class Scen {
 
   @ParameterizedTest(name = "Scénario {0} OK")
-  @ValueSource(ints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })
+  @MethodSource("argsProviderFactory")
   public void scen(int input) throws NoSuchElementException, FileNotFoundException, IOException {
     String fileContents = Scenario.readScenarioToString(input);
     Scenario testScenario = new Scenario(input);

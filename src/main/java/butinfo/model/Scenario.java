@@ -79,7 +79,7 @@ public class Scenario {
      * @return the quest with the given id or null if there is no quest with the
      *         given id in the list
      */
-    protected Quest getQuest(int id) throws NoSuchElementException {
+    public Quest getQuest(int id) throws NoSuchElementException {
         for (Quest quest : quests) {
             if (quest.getId() == id)
                 return quest;

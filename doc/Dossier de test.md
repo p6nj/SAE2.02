@@ -60,15 +60,15 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | non                   | oui     | oui         | faux               |
 
 ##### Données de test
-| Quêtes effectués | Quête actuelle | Xp nécessaire atteint (quête 0 uniquement) | Antécédent(s) de la quête | Résultats Attendus |
-| :--------------- | :------------- | :----------------------------------------- | :------------------------ | :----------------- |
-| 1,2              | 3              | /                                          | 2                         | vrai               |
-| 1,2              | 5              | /                                          | 4                         | faux               |
-| X                | 1              | /                                          | /                         | vrai               |
-| 1,2              | 0              | oui                                        | 4                         | faux               |
-| 1,2,3,4          | 0              | oui                                        | 4                         | vrai               |
-| 1,2,3,4          | 0              | non                                        | 4                         | faux               |
-| 1,2,3,4          | 0              | non                                        | 5                         | faux               |
+| Quêtes effectués | Quête actuelle | XP nécessaire | XP atteint | Antécédent(s) de la quête | Résultats Attendus |
+| :--------------- | :------------- | :------------ | :--------- | :------------------------ | :----------------- |
+| 1,2              | 3              | /             | /          | 2                         | vrai               |
+| 1,2              | 4              | /             | /          | 3                         | faux               |
+| /                | 1              | /             | /          | /                         | vrai               |
+| 1,2,3,4          | 0              | 100           | 200        | 4                         | faux               |
+| 4                | 0              | 100           | 50         | 4                         | vrai               |
+| 1                | 0              | 100           | 50         | 4                         | faux               |
+| 1,2,3            | 0              | 100           | 150        | 4                         | faux               |
 
 ---
 #### 2. Test 2
