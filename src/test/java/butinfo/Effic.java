@@ -21,7 +21,7 @@ public class Effic {
     @ParameterizedTest(name = "{0}")
     @MethodSource("argsProviderFactory")
     public void effic(Scenario s, Vector<Quest> expected) {
-        assertEquals(true, true);
+        assertEquals(expected, s.efficace1());
     }
 
     static Stream<Arguments> argsProviderFactory() throws NoSuchElementException, FileNotFoundException, IOException {
