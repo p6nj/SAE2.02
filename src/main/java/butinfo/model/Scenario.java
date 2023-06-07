@@ -48,7 +48,7 @@ public class Scenario {
     }
 
     public Scenario(String fileContents) throws NoSuchElementException, FileNotFoundException, IOException {
-        for (String line : fileContents.split("\\n")) {
+        for (String line : fileContents.split(System.lineSeparator())) {
             if (!line.isBlank())
                 quests.add(parse(line));
         }
@@ -98,7 +98,7 @@ public class Scenario {
     public String toString() {
         String result = "";
         for (int i = 0; i < quests.size() - 1; i++) {
-            result = result + quests.get(i).toString() + "\n";
+            result = result + quests.get(i).toString() + System.lineSeparator();
         }
         result = result + quests.get(quests.size() - 1);
         return result;
