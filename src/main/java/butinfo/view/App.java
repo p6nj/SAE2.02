@@ -6,17 +6,16 @@ import java.nio.file.Paths;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setWidth(10);
-        stage.setHeight(10);
+        stage.setWidth(400);
+        stage.setHeight(300);
         stage.centerOnScreen();
-        Scene scene = new Scene(new HBox());
+        Scene scene = new Scene1();
         stage.setScene(scene);
         stage.setTitle("coucou");
 
