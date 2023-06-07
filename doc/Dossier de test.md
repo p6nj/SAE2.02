@@ -159,11 +159,35 @@ Soit le scénario S$\beta$ défini par ces antécédents: <u>C</u>->B, B->A, D a
 ### 3. Résultats
 | Test 1                       |                |
 | :--------------------------- | :------------- |
-| Référence du test appliqué : | d              |
+| Référence du test appliqué : | access         |
 | Responsable :                | Breval Ferrari |
-| Date d'application :         | d              |
-| Résultat :                   | d              |
-| Occurences des résultats :   | d              |
+| Date d'application :         | 7/06/2023      |
+| Résultat :                   | pass           |
+| Occurences des résultats :   | systématique   |
+
+| Test 2                       |                |
+| :--------------------------- | :------------- |
+| Référence du test appliqué : | exhaust        |
+| Responsable :                | Breval Ferrari |
+| Date d'application :         | 7/06/2023      |
+| Résultat :                   | pass           |
+| Occurences des résultats :   | systématique   |
+
+| Test 3                       |                |
+| :--------------------------- | :------------- |
+| Référence du test appliqué : | effic          |
+| Responsable :                | Breval Ferrari |
+| Date d'application :         | 7/06/2023      |
+| Résultat :                   | pass           |
+| Occurences des résultats :   | systématique   |
+
+| Test 4                       |                |
+| :--------------------------- | :------------- |
+| Référence du test appliqué : | scen           |
+| Responsable :                | Breval Ferrari |
+| Date d'application :         | 7/06/2023      |
+| Résultat :                   | pass           |
+| Occurences des résultats :   | systématique   |
 
 ### 4. Conclusions
-uh
+Tous les tests passent systématiquement et triomphalement.
