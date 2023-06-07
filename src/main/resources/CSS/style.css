@@ -1,0 +1,32 @@
+.label {
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-size: 16;
+}
+
+.container {
+    -fx-max-width: 600px;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-display: inline-block;
+    -fx-min-width: 50px;
+    -fx-min-height: 40px;
+    -fx-margin: 10px;
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: red;
+}
+
+.tile-pane {
+    -fx-alignment: center;
+    -fx-alignment-baseline: center;
+}

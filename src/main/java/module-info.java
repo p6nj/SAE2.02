@@ -1,5 +1,6 @@
 module sae202 {
-    requires javafx.controls;
+    requires transitive javafx.controls;
 
     exports butinfo.view;
+    exports butinfo.controler;
 }
