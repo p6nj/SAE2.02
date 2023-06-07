@@ -65,8 +65,8 @@ Les tests s'effecturont via l'extension Test Explorer UI de Visual Studio Code. 
 | 1,2              | 3              | /             | /          | 2                         | vrai               |
 | 1,2              | 4              | /             | /          | 3                         | faux               |
 | /                | 1              | /             | /          | /                         | vrai               |
-| 1,2,3,4          | 0              | 100           | 200        | 4                         | faux               |
-| 4                | 0              | 100           | 50         | 4                         | vrai               |
+| 1,2,3,4          | 0              | 100           | 200        | 4                         | vrai               |
+| 4                | 0              | 100           | 50         | 4                         | faux               |
 | 1                | 0              | 100           | 50         | 4                         | faux               |
 | 1,2,3            | 0              | 100           | 150        | 4                         | faux               |
 
