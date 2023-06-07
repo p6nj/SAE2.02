@@ -17,6 +17,5 @@ public class Main {
 
         for (Quest q : s.efficace1())
             System.out.print(q.getId());
-
     }
 }
