@@ -24,6 +24,8 @@ public class App extends Application {
         String mainPath = Paths.get(uri).toString();
         Path path = Paths.get(mainPath, "style.css");
         scene.getStylesheets().add(path.toFile().toURI().toString());
+
+        stage.show();
     }
 
     public static void main(String[] args) {
