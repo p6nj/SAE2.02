@@ -26,7 +26,7 @@ public class Controler implements EventHandler<ActionEvent> {
             Scene2.setScenario(((ScenarioButton) source).getN());
             App.setScene(2);
         } else if (((Node) source).getId() == "back")
-            App.setScene((int) ((Node) source).getUserData());
+            App.setScene(1);
     }
 
     /**

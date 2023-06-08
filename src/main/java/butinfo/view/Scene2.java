@@ -30,7 +30,6 @@ public class Scene2 extends Scene {
         separator.setMinHeight(20);
         methods.getStyleClass().add("container");
         back.setId("back");
-        back.setUserData(1);
     }
 
     public static void setScenario(int scenario) {
