@@ -32,7 +32,7 @@ public class App extends Application {
         scene3.getStylesheets().add(path.toFile().toURI().toString());
 
         stage.show();
-        setScene(2);
+        // setScene(2);
     }
 
     public static void main(String[] args) {
@@ -41,14 +41,6 @@ public class App extends Application {
 
     public static void setScene(int scene) {
         stage.setScene(scene == 1 ? scene1 : scene == 2 ? scene2 : scene3);
-    }
-
-    public static void setSelectedScenario(int selectedScenario) {
-
-    }
-
-    public static void setSelectedMode(int selectedMode) {
-
     }
 
 }

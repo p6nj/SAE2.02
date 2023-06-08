@@ -15,6 +15,7 @@ public class Scene2 extends Scene {
     private static HBox methods = new HBox();
     private static Button back = new Button("Menu précédent");
     private static Separator separator = new Separator();
+    private static int chosenScenario = 0;
 
     public Scene2(Controler c) {
         super(root);
@@ -29,10 +30,16 @@ public class Scene2 extends Scene {
         separator.setMinHeight(20);
         methods.getStyleClass().add("container");
         back.setId("back");
+        back.setUserData(1);
     }
 
     public static void setScenario(int scenario) {
-        Scene2.scenario.setText(String.format(format, 0));
+        Scene2.scenario.setText(String.format(format, scenario));
+        chosenScenario = scenario;
+    }
+
+    public static int getChosenScenario() {
+        return chosenScenario;
     }
 
 }

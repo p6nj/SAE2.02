@@ -9,15 +9,24 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import butinfo.view.App;
+import butinfo.view.ScenarioButton;
+import butinfo.view.Scene2;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 
 public class Controler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent a) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handle'");
+        Object source = a.getSource();
+        if (source instanceof ScenarioButton) {
+            // scene1 called scene2 with the scenario choice
+            Scene2.setScenario(((ScenarioButton) source).getN());
+            App.setScene(2);
+        } else if (((Node) source).getId() == "back")
+            App.setScene((int) ((Node) source).getUserData());
     }
 
     /**
