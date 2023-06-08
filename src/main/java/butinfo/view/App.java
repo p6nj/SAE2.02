@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private static Controler controler = new Controler();
-    private static Scene scene1 = new Scene1(controler), scene2 = new Scene2(controler), scene3 = new Scene3();
+    private static Scene scene1 = new Scene1(controler), scene2 = new Scene2(controler), scene3 = new Scene3(controler);
     private static Stage stage;
 
     @Override
@@ -32,7 +32,7 @@ public class App extends Application {
         scene3.getStylesheets().add(path.toFile().toURI().toString());
 
         stage.show();
-        // setScene(2);
+        // setScene(3);
     }
 
     public static void main(String[] args) {

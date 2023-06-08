@@ -3,4 +3,5 @@ module sae202 {
 
     exports butinfo.view;
     exports butinfo.controler;
+    exports butinfo.model;
 }
